@@ -6,14 +6,25 @@ public class Jaula {
     private int capacidadeMaxima;
     private ArrayList<Animal> animais;
 
-    public Jaula() {
+    public Jaula(String nome, int capacidadeMaxima) {
 
+        if(capacidadeMaxima > 5) {
+            System.out.println("Você não pode adicionar mais de 5 vagas na jaula");
+            throw new IllegalArgumentException();
+        }
+
+        this.nome = nome;
+        this.animais = new ArrayList<Animal>();
+        this.capacidadeMaxima = capacidadeMaxima;
+        
     }
 
-    public Jaula(String nome, int capacidadeMaxima) {
-        this.nome =  nome;
-        this.capacidadeMaxima = capacidadeMaxima;
-        this.animais = new ArrayList<Animal>();
+    public String getNome() {
+        return this.nome;
+    }
+
+    public ArrayList<Animal> getAnimais() {
+        return this.animais;
     }
 
     public void addAnimal(Animal animal) {
@@ -30,14 +41,10 @@ public class Jaula {
         this.animais.remove(animal);
     }
 
-    public void limpar() {
-        System.out.println("A jaula foi limpa");
-    }
-
     public void listarAnimais() {
         System.out.println("\nTodos os animais da " + this.nome);
-        for (int i = 0; i < this.animais.length; i++) {
-            if(this.animais[i] != null)System.out.println(this.animais[i].getNome());
+        for (Animal animal : animais) {
+            System.out.println(animal.getNome());
         }
     }
 

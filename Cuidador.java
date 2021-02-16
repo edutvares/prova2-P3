@@ -1,13 +1,15 @@
+import java.util.ArrayList;
+
 public class Cuidador {
     
     private String nome;
 
-    public Cuidador() {
-
-    }
-
     public Cuidador(String nome) {
         this.nome = nome;
+    }
+
+    public String getNome() {
+        return this.nome;
     }
 
     public void limparAnimal(Animal animal) {
@@ -19,7 +21,10 @@ public class Cuidador {
     }
 
     public void limparJaula(Jaula jaula) {
-        jaula.limpar();
+        ArrayList<Animal> animais = jaula.getAnimais();
+        for(Animal animal : animais) {
+            animal.limpar();
+        }
     }
 
 }
